@@ -87,7 +87,44 @@ const crearGrupo = async (id, nombreGrupo, integrantes) => {
     grupo.save()
 }
 
-// crearGrupo(1, "findePilar", [
+
+
+
+const mostrarGrupos = async () => {
+    const Grupos = await Grupo.find()
+    console.log(Grupos)
+}
+const modificarGasto = async (idGrupo, idUser) => {
+    const participante = await Grupo.find()
+    let obj;
+    participante.map((v) => {
+        if (v._id == idGrupo) {
+            obj = v
+        }
+
+    })
+    obj.integrantes.map((nombres) => {
+        if (nombres.id == idUser) {
+            console.log(nombres.nombre)
+        }
+    })
+
+    // await Grupo.updateOne({_id:id},
+    //     {
+    //         $set: {
+    //             integrantes:"fiesta"
+
+    //         }
+    //     })
+}
+
+
+
+// mostrarGrupos()
+modificarGasto("62193d48ef5e3d97dfc4b56f", 1)
+
+
+// crearGrupo(3, "Mendoza", [
 //     {
 //         "id": 1,
 //         "nombre": "martinBarreiro",
