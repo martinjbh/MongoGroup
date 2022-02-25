@@ -1,0 +1,23 @@
+{
+    "id": 1,
+    "nombreGrupo": "FindeAmigos",
+    "total": 0,
+    "integrantes": [
+        {
+            "id": 1,
+            "nombre": "martinBarreiro",
+            "gastos": 300
+        },
+        {
+            "id": 2,
+            "nombre": "fedeBarreiro",
+            "gastos": 300
+        },
+        {
+            "id": 1,
+            "nombre": "matiasGimenez",
+            "gastos": 300
+        }
+    ]
+}
+
