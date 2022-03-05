@@ -82,71 +82,65 @@ const grupoSchema = new mongoose.Schema({
 
 const Grupo = mongoose.model('Grupo', grupoSchema);
 
+
 const crearGrupo = async (id, nombreGrupo, integrantes) => {
     let grupo = new Grupo({ id: id, nombreGrupo: nombreGrupo, total: 0, integrantes: integrantes });
     grupo.save()
 }
 
-
-
-
 const mostrarGrupos = async () => {
     const Grupos = await Grupo.find()
+
     console.log(Grupos)
 }
-const modificarGasto = async (idGrupo, idUser) => {
-    const participante = await Grupo.find()
-    let obj;
-    participante.map((v) => {
-        if (v._id == idGrupo) {
-            obj = v
-        }
 
-    })
-    obj.integrantes.map((nombres) => {
-        if (nombres.id == idUser) {
-            console.log(nombres.nombre)
+const modificarGasto = async (idGrupo, nombre, gasto) => {
+    const Grupos = await Grupo.find()
+    var suma2;
+    var suma = Grupos[0].integrantes
+    suma.map((v) => {
+        if (v.nombre == nombre) {
+            suma2 = parseInt(v.gastos)
         }
     })
-
-    // await Grupo.updateOne({_id:id},
-    //     {
-    //         $set: {
-    //             integrantes:"fiesta"
-
-    //         }
-    //     })
+    
+    await Grupo.updateOne(
+        { _id: idGrupo, "integrantes.nombre": nombre },
+        {
+            $set: {
+                "integrantes.$.gastos": suma2 + parseInt(gasto)
+            }
+        }
+    )
 }
 
-
-
 // mostrarGrupos()
-modificarGasto("62193d48ef5e3d97dfc4b56f", 1)
-
-
-// crearGrupo(3, "Mendoza", [
+ //modificarGasto("62193d48ef5e3d97dfc4b56f", 1, 7000)  // (idgrupo,nombreUser,gasto)
+// crearGrupo(3, "paraguay", [
 //     {
 //         "id": 1,
-//         "nombre": "martinBarreiro",
+//         "nombre": "jasinta",
 //         "gastos": 300
 //     },
 //     {
 //         "id": 2,
-//         "nombre": "fedeBarreiro",
+//         "nombre": "vero",
 //         "gastos": 300
 //     },
 //     {
 //         "id": 1,
-//         "nombre": "matiasGimenez",
+//         "nombre": "carlitos",
 //         "gastos": 300
 //     }
 // ])
 
-
-
-
 app.post('/registrar', async (req, res) => {
-    console.log(req.body)
+    var gasto = req.body.dinero
+    var asunto = req.body.asunto
+    var nombre = req.body.nombre
+    console.log(`(Gasto: $${gasto}) (Asunto: ${asunto})  (Name: ${nombre})`)
+    modificarGasto("62193d48ef5e3d97dfc4b56f", nombre, gasto)
+
 
 })
 app.get('/api', (req, res) => {

@@ -18,13 +18,14 @@ function App() {
   //   .then((res) => {
   //     console.log(res)
   //   })
-  const traerInput = (asunto, dinero) => {
-    axio(asunto, dinero)
+  const traerInput = (asunto, dinero, nombre) => {
+    axio(asunto, dinero, nombre)
   }
-  const axio = (asunto, dinero) => {
+  const axio = (asunto, dinero, nombre) => {
     axios.post('http://localhost:3001/registrar', {
       asunto: asunto,
-      dinero: dinero
+      dinero: dinero,
+      nombre: nombre
     })
       .then(function (response) {
         console.log(response);
@@ -35,12 +36,12 @@ function App() {
   }
   return (
     <div >
-    
+
       <Show titulo="0" />
-      <Usuario nombre="Federico Barreiro" function={traerInput} dineroPropio="" />
-      <Usuario nombre="Martin Barreiro" function={traerInput} dineroPropio="" />
-      <Usuario nombre="Matias Gimenez" function={traerInput} dineroPropio="" />
-      
+      <Usuario nombre="martinBarreiro" function={traerInput} dineroPropio="" />
+      <Usuario nombre="fedeBarreiro" function={traerInput} dineroPropio="" />
+      <Usuario nombre="matiasGimenez" function={traerInput} dineroPropio="" />
+
     </div>
   );
 }

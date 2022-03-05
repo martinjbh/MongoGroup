@@ -5,7 +5,7 @@ const Usuario = (props) => {
     const [gasto, setGasto] = useState()
     const mostrar = () => {
     
-       props.function(asunto,gasto)
+       props.function(asunto,gasto,props.nombre)
        setAsunto("")
        setGasto("")
     }
