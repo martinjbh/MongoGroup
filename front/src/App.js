@@ -1,47 +1,55 @@
 import react from 'react';
-// import './App.css';
 import "./app.scss"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Usuario from './Components/Usuario/Usuario';
-import Show from './Components/Show/Show';
+import CrearGrupo from './Components/CrearGrupo/CrearGrupo';
 const axios = require('axios').default;
-const obj = {
-  name: "martin",
-  edad: 22,
-  mail: "barreiromartinj@gm.",
-}
-
 
 function App() {
-  const [prueba, setprueba] = useState("")
-  // axios.get("http://192.168.0.12:3001/api")
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    retornarTotal()
+  });
+
   const traerInput = (asunto, dinero, nombre) => {
+    if (!asunto && !dinero) {
+      return alert("Campos Vacios")
+    }
     axio(asunto, dinero, nombre)
+    // setTimeout(function () {
+    //   retornarTotal()
+    // }, 800)
+
+  }
+  const retornarTotal = () => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/ObtenerTotal',
+    })
+      .then(function (response) {
+        setTotal(response.data.total)
+        retornarTotal()
+      });
   }
   const axio = (asunto, dinero, nombre) => {
-    axios.post('http://localhost:3001/registrar', {
+    axios.post('http://localhost:3001/ModificarGasto', {
       asunto: asunto,
       dinero: dinero,
       nombre: nombre
     })
       .then(function (response) {
-        console.log(response);
+        console.log(response)
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+
   }
   return (
     <div >
-
-      <Show titulo="0" />
+      <h1>{total}</h1>
       <Usuario nombre="martinBarreiro" function={traerInput} dineroPropio="" />
       <Usuario nombre="fedeBarreiro" function={traerInput} dineroPropio="" />
       <Usuario nombre="matiasGimenez" function={traerInput} dineroPropio="" />
-
+      <CrearGrupo />
     </div>
   );
 }

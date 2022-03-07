@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAA;EACb,UAAU,EAAE,EAAE;CAQf;;AATD,AAEI,eAFW,CAEX,KAAK,CAAA;EACD,aAAa,EAAE,GAAG;CAErB;;AALL,AAMI,eANW,CAMX,MAAM,CAAA;EACF,aAAa,EAAE,GAAG;CACrB;;AAEL,AAAA,OAAO,CAAA;EACH,OAAO,EAAE,WAAW;CACvB",
+    "sources": [
+        "CrearGrupo.scss"
+    ],
+    "names": [],
+    "file": "CrearGrupo.css"
+}

@@ -1,0 +1,17 @@
+.containerGrupo {
+  margin-top: 5%;
+}
+
+.containerGrupo input {
+  border-radius: 1em;
+}
+
+.containerGrupo button {
+  border-radius: 1em;
+}
+
+.inputs {
+  display: -ms-inline-grid;
+  display: inline-grid;
+}
+/*# sourceMappingURL=CrearGrupo.css.map */
