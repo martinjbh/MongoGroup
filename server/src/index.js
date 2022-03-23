@@ -132,11 +132,10 @@ app.post('/ModificarGasto', async (req, res) => {
     console.log(`(Gasto: $${gasto}) (Asunto: ${asunto})  (Name: ${nombre})`)
     modificarGasto("6222e9de1b1c0ce44a896457", nombre, gasto)
 })
+
 app.post('/CrearGrupo', async (req, res) => {
     var grupo = req.body
-  
     crearGrupo(3,grupo.nombreGrupo,grupo.integrantes)
-
 })
 app.get('/ObtenerTotal', async (req, res) => {
     const total = await Grupo.findById("6222e9de1b1c0ce44a896457")
@@ -151,11 +150,6 @@ app.get('/ObtenerTotal', async (req, res) => {
 app.listen(3001, () => {
     console.log(`Server On Port  ${3001} `)
 });
-
-
-
-
-
 
 
 

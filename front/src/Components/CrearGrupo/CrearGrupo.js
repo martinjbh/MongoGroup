@@ -24,6 +24,7 @@ const CrearGrupo = () => {
     }
     return (
         <div class="containerGrupo">
+            <h1>Crear Grupo</h1>
             <input value={value} onChange={event => setValue(event.target.value)} placeholder="Nombre Del Grupo"></input>
             <button onClick={Grupoenviar}>CrearGrupo</button>
             <div class="inputs">

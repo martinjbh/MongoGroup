@@ -45,7 +45,7 @@ function App() {
   }
   return (
     <div >
-      <h1>{total}</h1>
+      <h1>Total: ${total}</h1>
       <Usuario nombre="martinBarreiro" function={traerInput} dineroPropio="" />
       <Usuario nombre="fedeBarreiro" function={traerInput} dineroPropio="" />
       <Usuario nombre="matiasGimenez" function={traerInput} dineroPropio="" />
