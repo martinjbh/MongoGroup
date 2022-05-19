@@ -34,6 +34,7 @@ const crear = async (nombre, nacionalidad, edad) => {
         console.log("existe")
     }
 }
+
 //MOSTRANDO DATOS EN LA BASE DE DATOS//
 
 const mostrar = async () => {
@@ -130,20 +131,32 @@ app.post('/ModificarGasto', async (req, res) => {
     var asunto = req.body.asunto
     var nombre = req.body.nombre
     console.log(`(Gasto: $${gasto}) (Asunto: ${asunto})  (Name: ${nombre})`)
-    modificarGasto("6222e9de1b1c0ce44a896457", nombre, gasto)
+    modificarGasto("6222e9bacca2a3ce1cc30e59", nombre, gasto)
 })
 
 app.post('/CrearGrupo', async (req, res) => {
+
     var grupo = req.body
-    crearGrupo(3,grupo.nombreGrupo,grupo.integrantes)
+    console.log(req.body)
+
+
+    crearGrupo(3, grupo.nombreGrupo, grupo.integrantes)
 })
 app.get('/ObtenerTotal', async (req, res) => {
-    const total = await Grupo.findById("6222e9de1b1c0ce44a896457")
+    const total = await Grupo.findById("6222e9bacca2a3ce1cc30e59")
     var js = { "total": 0 }
     await total.integrantes.forEach(e => {
         js.total += e.gastos
     });
+
+    // throw new Error('BROKEN')
+
     res.json(js)
+
+
+
+
+
 })
 
 //strarting

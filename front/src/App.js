@@ -31,6 +31,7 @@ function App() {
         setTotal(response.data.total)
         retornarTotal()
       });
+
   }
   const axio = (asunto, dinero, nombre) => {
     axios.post('http://localhost:3001/ModificarGasto', {
